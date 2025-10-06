@@ -17,29 +17,18 @@ if (!global._mongoClientPromise) {
 }
 const clientPromise = global._mongoClientPromise;
 
-/** Construye un ISO-like con offset -05:00 y también string legible en es-CO */
-function colombiaTimestamps() {
-  const now = new Date();
-  // ISO con offset -05:00 (approx — representado como string). Construimos con Intl parts:
-  const parts = new Intl.DateTimeFormat('en-GB', {
-    timeZone: 'America/Bogota',
-    year: 'numeric', month: '2-digit', day: '2-digit',
-    hour: '2-digit', minute: '2-digit', second: '2-digit',
-    hour12: false
-  }).formatToParts(now);
 
-  const map = {};
-  for (const p of parts) {
-    if (p.type !== 'literal') map[p.type] = p.value;
-  }
-  const isoLocal = `${map.year}-${map.month}-${map.day}T${map.hour}:${map.minute}:${map.second}-05:00`;
-  const pretty = new Intl.DateTimeFormat('es-CO', {
-    timeZone: 'America/Bogota',
-    dateStyle: 'medium',
-    timeStyle: 'medium'
-  }).format(now);
-  return { isoLocal, pretty, serverDate: now }; // serverDate es Date UTC (BSON Date)
-}
+function getColombiaDate() {
+  const now = new Date();
+
+  // offset Colombia = -5 horas
+  const offsetMillis = -5 * 60 * 60 * 1000;
+
+  // Creamos un nuevo Date ajustado a Bogotá
+  const fechaUTC=now;
+  const fechaColombia=new Date(now.getTime() + offsetMillis)
+  return {fechaUTC,fechaColombia}
+} 
 
 module.exports = async (req, res) => {
   try {
@@ -60,15 +49,14 @@ module.exports = async (req, res) => {
     const id = (crypto.randomUUID && crypto.randomUUID()) || crypto.randomBytes(16).toString('hex');
 
     // Fechas en hora Colombia
-    const { isoLocal, pretty, serverDate } = colombiaTimestamps();
-
+    const {fechaUTC,fechaColombia}  = getColombiaDate();
     const doc = {
       id,
       accion: String(accion),
-      fechaHoraLocalISO: isoLocal,   // ejemplo: "2025-09-30T14:30:00-05:00"
-      fechaHoraLocalReadable: pretty, // formato legible en es-CO
-      serverDate // BSON Date (momento exacto, UTC internally)
+      fechaUTC: fechaUTC,
+      fechaColombia: fechaColombia
     };
+
 
     const client = await clientPromise;
     const db = client.db('logsDB');        // Ajusta si quieres otro nombre
