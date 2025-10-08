@@ -5,22 +5,207 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Enviar acción a Atlas</title>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
   <main class="container">
     <h1>Enviar acción a Atlas</h1>
-    <p>Haz clic en un botón para enviar acción + id autogenerada + fecha/hora (Colombia)</p>
-
-    <div class="buttons">
-      <button id="btn1" class="action-btn">Enviar Acción1</button>
-      <button id="btn2" class="action-btn">Enviar Acción2</button>
-    </div>
-
+    <p>Entren a la pagina o llenen el formulario para enviar datos</p>
     <section class="result">
       <pre id="out">No hay envíos aún.</pre>
     </section>
   </main>
 
+  <div class="container">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h1 class="h4 mb-3">Formulario de inscripción a cursos</h1>
+        <p class="form-note">Rellena los datos para unirte a un curso. Los campos marcados con <span class="text-danger">*</span> son obligatorios.</p>
+
+        <form id="inscripcionForm" class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="tipoDocumento" class="form-label required">Tipo de documento</label>
+              <select id="tipoDocumento" name="tipoDocumento" class="form-select" required>
+                <option value="">Selecciona...</option>
+                <option value="tarjeta">Tarjeta de identidad</option>
+                <option value="cc">Cédula de ciudadanía</option>
+                <option value="ce">Cédula de extranjería</option>
+              </select>
+              <div class="invalid-feedback">Selecciona un tipo de documento.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="numeroDocumento" class="form-label required">Número de documento</label>
+              <input type="text" inputmode="numeric" id="numeroDocumento" name="numeroDocumento" class="form-control" placeholder="Ej: 12345678" required minlength="5" maxlength="15" pattern="^[0-9]+$">
+              <div class="invalid-feedback">Ingresa solo números (5–15 dígitos).</div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="nombres" class="form-label required">Nombres</label>
+              <input type="text" id="nombres" name="nombres" class="form-control" placeholder="Tus nombres" required pattern="^[A-Za-zÀ-ÿñÑ' -]{2,}$" minlength="2">
+              <div class="invalid-feedback">Ingresa tus nombres (solo letras, espacios y guiones).</div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="apellidos" class="form-label required">Apellidos</label>
+              <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Tus apellidos" required pattern="^[A-Za-zÀ-ÿñÑ' -]{2,}$" minlength="2">
+              <div class="invalid-feedback">Ingresa tus apellidos (solo letras, espacios y guiones).</div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="email" class="form-label required">Correo electrónico</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="nombre@ejemplo.com" required>
+              <div class="invalid-feedback">Ingresa un correo válido.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="celular" class="form-label required">Número de celular</label>
+              <input type="tel" id="celular" name="celular" class="form-control" placeholder="Ej: +57 3001234567" required pattern="^[+0-9()\s-]{7,20}$">
+              <div class="invalid-feedback">Ingresa un número válido (7–20 caracteres; puede incluir +, espacios o guiones).</div>
+            </div>
+
+            <div class="col-12">
+              <label for="curso" class="form-label required">Curso</label>
+              <select id="curso" name="curso" class="form-select" required>
+                <option value="">Selecciona el curso de interés...</option>
+                <option>Matemáticas generales</option>
+                <option>Cálculo</option>
+                <option>Diseño gráfico</option>
+                <option>Física</option>
+                <option>Inglés académico</option>
+                <option>Programación básica (Python)</option>
+                <option>Estadística aplicada</option>
+                <option>Investigación y metodología</option>
+                <option>Inteligencia artificial básica</option>
+                <option>Bases de datos</option>
+                <option>Redes y comunicaciones</option>
+                <option>Economía para ingenieros</option>
+                <option>Química práctica</option>
+                <option>Habilidades blandas y liderazgo</option>
+              </select>
+              <div class="invalid-feedback">Selecciona al menos un curso.</div>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">Comentarios (opcional)</label>
+              <textarea id="comentarios" name="comentarios" class="form-control" rows="3" placeholder="Algo que quieras que el instructor sepa..."></textarea>
+            </div>
+
+            <div class="col-12 d-flex justify-content-between align-items-center">
+              <div>
+                <small class="form-note">Los datos se validan en el cliente antes de enviarse. Asegurarse de revisar.</small>
+              </div>
+              <div>
+                <button class="btn btn-secondary me-2" type="reset">Limpiar</button>
+                <button id="envio" class="btn btn-primary" type="submit">Unirme al curso</button>
+              </div>
+            </div>
+
+          </div>
+        </form>
+
+        <div id="mensajeSalida" class="mt-4" aria-live="polite"></div>
+
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Short helpers for validation
+    const form = document.getElementById('inscripcionForm');
+    const salida = document.getElementById('mensajeSalida');
+
+    // Field references
+    const tipoDocumento = document.getElementById('tipoDocumento');
+    const numeroDocumento = document.getElementById('numeroDocumento');
+    const nombres = document.getElementById('nombres');
+    const apellidos = document.getElementById('apellidos');
+    const email = document.getElementById('email');
+    const celular = document.getElementById('celular');
+    const curso = document.getElementById('curso');
+
+    // Regex validators
+    const nameRegex = /^[A-Za-zÀ-ÿñÑ' -]{2,}$/;
+    const docRegex = /^[0-9]{5,15}$/; // only digits 5-15
+    const phoneRegex = /^[+0-9()\s-]{7,20}$/;
+
+    // Apply real-time validation styling
+    function checkField(field, testFn) {
+      const valid = testFn(field.value.trim());
+      field.classList.toggle('is-valid', valid);
+      field.classList.toggle('is-invalid', !valid);
+      return valid;
+    }
+
+    // Specific field checkers
+    numeroDocumento.addEventListener('input', () => {
+      // adapt rule by type if desired
+      checkField(numeroDocumento, v => docRegex.test(v));
+    });
+
+    nombres.addEventListener('input', () => checkField(nombres, v => nameRegex.test(v)));
+    apellidos.addEventListener('input', () => checkField(apellidos, v => nameRegex.test(v)));
+    email.addEventListener('input', () => checkField(email, v => email.checkValidity()));
+    celular.addEventListener('input', () => checkField(celular, v => phoneRegex.test(v)));
+    tipoDocumento.addEventListener('change', () => checkField(tipoDocumento, v => tipoDocumento.value !== ''));
+    curso.addEventListener('change', () => checkField(curso, v => curso.value !== ''));
+
+    // On form submit
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      // Run constraint validation
+      let valid = true;
+
+      if (!checkField(tipoDocumento, v => tipoDocumento.value !== '')) valid = false;
+      if (!checkField(numeroDocumento, v => docRegex.test(v))) valid = false;
+      if (!checkField(nombres, v => nameRegex.test(v))) valid = false;
+      if (!checkField(apellidos, v => nameRegex.test(v))) valid = false;
+      if (!checkField(email, v => email.checkValidity())) valid = false;
+      if (!checkField(celular, v => phoneRegex.test(v))) valid = false;
+      if (!checkField(curso, v => curso.value !== '')) valid = false;
+
+      form.classList.add('was-validated');
+
+      if (!valid) {
+        salida.innerHTML = '<div class="alert alert-danger" role="alert">Hay errores en el formulario. Revisa los campos marcados en rojo.</div>';
+        salida.scrollIntoView({behavior: 'smooth'});
+        return;
+      }
+
+      // If valid: simulate submission and show summary
+      const resumen = `\nTipo documento: ${tipoDocumento.options[tipoDocumento.selectedIndex].text}\nDocumento: ${numeroDocumento.value}\nNombre: ${nombres.value} ${apellidos.value}\nCorreo: ${email.value}\nCelular: ${celular.value}\nCurso: ${curso.value}\nComentarios: ${document.getElementById('comentarios').value}`;
+
+      salida.innerHTML = `
+        <div class="alert alert-success" role="alert">
+          <strong>Inscripción recibida.</strong> Has sido inscrito correctamente (simulado).<br>
+          <pre class="course-preview mt-2">${resumen}</pre>
+        </div>
+      `;
+
+      // Optionally clear and reset validation states
+      form.reset();
+      form.classList.remove('was-validated');
+      [numeroDocumento, nombres, apellidos, email, celular, tipoDocumento, curso].forEach(f => f.classList.remove('is-valid'));
+      salida.scrollIntoView({behavior: 'smooth'});
+    }, false);
+
+    // Accessibility: clear validation when resetting
+    form.addEventListener('reset', () => {
+      setTimeout(() => {
+        form.classList.remove('was-validated');
+        [numeroDocumento, nombres, apellidos, email, celular, tipoDocumento, curso].forEach(f => {
+          f.classList.remove('is-valid');
+          f.classList.remove('is-invalid');
+        });
+        salida.innerHTML = '';
+      }, 0);
+    });
+
+  </script>
 </body>
 </html>

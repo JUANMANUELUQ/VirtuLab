@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Eliminar variable visitado</title>
+  <style>
+    body {
+      background-color: orange;
+      font-family: Arial, sans-serif;
+      color: #222;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      font-size: 1.2em;
+      line-height: 1.5em;
+    }
+
+    button {
+      background-color: #fff;
+      color: #222;
+      border: 2px solid #222;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #222;
+      color: #fff;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Herramienta de pruebas: limpiar LocalStorage</h1>
+  <p>
+    Esta página tiene el fin de ayudarte en tus pruebas.  
+    Al presionar el botón de abajo, se eliminará la variable 
+    <strong>"visitado"</strong> del <code>localStorage</code>.  
+    De esta manera, podrás simular que un usuario entra por primera vez a tu web.
+  </p>
+
+  <button onclick="eliminarVisitado()">Eliminar variable "visitado"</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function eliminarVisitado() {
+      localStorage.removeItem("visitado");
+      document.getElementById("resultado").innerText = 
+        '✅ La variable "visitado" ha sido eliminada del localStorage.';
+    }
+  </script>
+</body>
+</html>

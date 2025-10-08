@@ -40,6 +40,9 @@ module.exports = async (req, res) => {
     // Si Vercel no parsea JSON automáticamente, asegúrate de enviar Content-Type: application/json
     const body = req.body || {};
     const accion = body.accion;
+    const nombre = body.nombre;
+    const email = body.email;
+    const ip = body.ip;
 
     if (!accion || typeof accion !== 'string') {
       return res.status(400).json({ error: 'campo "accion" (string) es requerido' });
@@ -50,13 +53,27 @@ module.exports = async (req, res) => {
 
     // Fechas en hora Colombia
     const {fechaUTC,fechaColombia}  = getColombiaDate();
-    const doc = {
-      id,
-      accion: String(accion),
-      fechaUTC: fechaUTC,
-      fechaColombia: fechaColombia
-    };
 
+    let doc;
+
+    if (nombre==null && email==null && ip==null){
+      doc = {
+        id,
+        accion: String(accion),
+        fechaUTC: fechaUTC,
+        fechaColombia: fechaColombia
+      };
+    } else{
+      doc = {
+        id,
+        accion: String(accion),
+        fechaUTC: fechaUTC,
+        fechaColombia: fechaColombia,
+        nombre: String(nombre),
+        email: String(email),
+        ip: String(ip)
+      };
+    }
 
     const client = await clientPromise;
     const db = client.db('logsDB');        // Ajusta si quieres otro nombre
