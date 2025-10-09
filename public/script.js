@@ -7,9 +7,8 @@ function verificarPrimeraVisita() {
   if (visitado === null) {
     enviarAccion('Visita',null,null,null);
     localStorage.setItem("visitado", "true");
-    alert("Entraste por primera vez");
   } else {
-    alert("Ya entraste antes");
+    // previously showed an alert here; removed to avoid annoying popups
   }
 }
 
@@ -48,6 +47,10 @@ async function enviarAccion(accion,nombre,email,ip) {
     }
 
     out.textContent = 'OK: ' + JSON.stringify(data, null, 2);
+    // If this was a form submission ('Envio'), navigate back to the main page after a short delay
+    if (accion === 'Envio') {
+      setTimeout(() => { window.location.href = 'paginaPrincipal.html'; }, 700);
+    }
   } catch (err) {
     document.getElementById('out').textContent = 'Error de red: ' + err.message;
   }

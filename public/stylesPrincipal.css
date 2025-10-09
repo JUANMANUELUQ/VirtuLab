@@ -1,0 +1,205 @@
+:root{
+  --bg: #ffffff;
+  --primary: #ff8a00;
+  --muted: #6b6b6b;
+  --card: #fff;
+  --border: #f0e7df;
+  --accent:#ffb366;
+}
+*{box-sizing:border-box}
+html,body{overflow-x:hidden}
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; background:var(--bg); color:#222; margin:0}
+.container{max-width:1100px;margin:0 auto;padding:0 16px}
+.site-header{position:sticky;top:0;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);z-index:40}
+.header-inner{display:flex;align-items:center;justify-content:center;height:68px;position:relative;padding-left:80px;padding-right:80px}
+.brand{display:flex;align-items:center;gap:10px;position:absolute;left:calc((100vw - 1100px)/2 + 12px);top:50%;transform:translateY(-50%);z-index:60}
+.brand{display:flex;align-items:center;gap:10px;position:fixed;left:12px;top:34px;transform:translateY(-50%);z-index:1000}
+.logo-icon{width:48px;height:48px;border-radius:9999px;background:var(--primary);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;border:2px solid var(--border);box-shadow:none}
+.logo-icon img{width:26px;height:26px;object-fit:contain;display:block}
+.logo-text{font-weight:800;font-size:25px;color:var(--primary);margin-left:10px}
+/* center the nav independently so brand and actions are pushed to edges */
+.nav{display:flex;gap:12px;justify-content:center}
+.nav a{margin:0 8px;color:#333;text-decoration:none;font-weight:600}
+.actions{display:flex;gap:12px;position:absolute;right:calc((100vw - 1100px)/2 + 12px);top:50%;transform:translateY(-50%);z-index:60}
+.actions{display:flex;gap:12px;position:fixed;right:12px;top:34px;transform:translateY(-50%);z-index:1000}
+
+/* ensure nav stays under brand/actions stacking order */
+.nav{z-index:50}
+
+/* Responsive: on smaller screens switch to normal flow to avoid overlap */
+@media (max-width:900px){
+  .brand, .nav, .actions{position:static;transform:none;text-align:center}
+  .header-inner{height:auto;gap:8px;padding:10px 16px}
+  .nav{justify-content:center;margin:8px 0}
+  .actions{justify-content:center}
+}
+.btn{padding:8px 12px;border-radius:14px;border:1px solid transparent;background:transparent;cursor:pointer;transition:background-color .18s ease,color .18s ease;font-weight:600;font-family:inherit}
+.btn.ghost{border-color:transparent}
+.btn.primary{background:var(--primary);color:#fff;border-color:transparent}
+
+/* Hover behavior for login button (ghost) to change color on hover */
+.btn.ghost:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+/* Nav link hover: match original frontend behavior */
+.nav a{margin:0 8px;color:#333;text-decoration:none;font-weight:600;transition:color .18s ease}
+.nav a:hover{color:var(--primary)}
+
+.hero{background:linear-gradient(180deg,var(--primary),#ff9b33);padding:28px 0;color:#fff}
+.hero-inner{padding:8px 0}
+.hero-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:center}
+.feature{display:flex;flex-direction:column;align-items:center; gap:4px;padding:6px}
+.feature-icon{width:56px;height:56px;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:20px}
+/* If feature-icon contains an image, ensure it fits and is centered */
+.feature-icon img{width:28px;height:28px;object-fit:contain;display:block}
+.feature h3{margin:0 0 6px 0;font-size:16px}
+.feature p, .hero-sub{margin:0;color:#fff;max-width:320px;text-align:center;font-size:14px}
+
+/* Two columns */
+.columns{display:grid;grid-template-columns:320px minmax(0,1fr);gap:28px;margin-top:18px}
+/* move explore container slightly to the left edge */
+.explore{max-width:1100px;margin-left:12px;margin-top:24px;background:#ffffff}
+/* allow the explore container to expand wider than the default .container max-width */
+.explore.container{max-width:none;width:100%;padding-left:28px;padding-right:28px;box-sizing:border-box}
+.explore-header{padding-top:8px;padding-bottom:6px}
+.filters{background:var(--card);padding:18px;border-radius:14px;border:1px solid var(--border);position:sticky;top:90px;height:fit-content;box-shadow:0 6px 18px rgba(0,0,0,0.04)}
+.filters-title{font-size:20px;margin:0 0 8px 0}
+.filter-subtitle{font-size:16px;margin:0 0 8px 0;color:var(--muted)}
+
+/* section title used for 'Cursos Destacados' */
+.section-title{font-size:16px;color:#6b6b6b;margin-top:22px;margin-bottom:10px;font-weight:700}
+.category-list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.category-list button{padding:10px 12px;border-radius:999px;border:1px solid var(--border);background:transparent;cursor:pointer;text-align:left;transition:background-color .18s ease,color .18s ease}
+.category-list button.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+/* hover effect for category options */
+.category-list button:hover{background:#fff2e6;color:var(--primary)}
+
+/* title + icon styling for explore */
+.explore-header{display:flex;align-items:center;gap:12px}
+.explore-title{display:flex;align-items:center;gap:8px}
+.explore-icon{width:56px;height:56px;border-radius:999px;background:#fff;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+.explore-icon img{width:32px;height:32px;object-fit:contain;display:block}
+.explore h2{margin:0;font-size:25px}
+#featured{margin-top:8px}
+.featured-item{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.featured-item img{width:56px;height:40px;object-fit:cover;border-radius:6px}
+
+.courses{min-height:300px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+
+/* 'Cursos (n)' header larger */
+#courses-count{font-size:20px;font-weight:700;margin-bottom:12px}
+
+/* Force 3 columns for the courses listing on desktop, with responsive fallbacks */
+.courses .grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:1100px){
+  .courses .grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:700px){
+  .courses .grid{grid-template-columns:1fr}
+}
+.card{background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,0.04);transition:transform .28s ease,box-shadow .28s ease,border-color .18s ease;position:relative;display:flex;flex-direction:column;min-height:420px}
+/* Thinner, more intense orange border/glow on hover and keyboard focus */
+.card:hover{
+  transform:translateY(-6px);
+  /* keep the lift shadow but add a tight, bright orange halo */
+  box-shadow:0 12px 24px rgba(0,0,0,0.09), 0 0 6px rgba(255,138,0,0.28);
+  /* stronger orange border (thin) */
+  border-color: var(--primary);
+  z-index:2;
+}
+.card:focus-within, .card:focus-visible{
+  box-shadow:0 12px 24px rgba(0,0,0,0.09), 0 0 6px rgba(255,138,0,0.32);
+  border-color: var(--primary);
+  outline: none;
+  z-index:2;
+}
+.card img{width:100%;height:200px;object-fit:cover;display:block}
+
+/* Ensure media does not cause horizontal overflow */
+img{max-width:100%;height:auto}
+.card-body{padding:16px;display:flex;flex-direction:column;gap:12px;flex:1}
+.badges{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:8px}
+.badge{background:#f3f3f3;padding:6px 10px;border-radius:10px;font-size:13px}
+.title{font-weight:700;margin:6px 0;font-size:18px}
+.desc{color:var(--muted);font-size:14px;height:60px;overflow:hidden;line-height:1.35}
+.meta{display:flex;gap:12px;color:var(--muted);font-size:12px;margin:8px 0}
+.meta small{font-size:12px}
+.price{display:flex;gap:8px;align-items:center}
+.text-price{font-size:28px;font-weight:800;color:var(--primary)}
+.enroll{display:block;width:100%;text-align:center;padding:12px 10px;background:var(--primary);color:#fff;border-radius:8px;text-decoration:none;margin-top:auto;font-weight:700}
+
+/* responsive */
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.columns{grid-template-columns:1fr}.filters{position:relative;top:0}}
+
+/* simple animation: shimmer */
+@keyframes shimmer{0%{background-position:-200px 0}100%{background-position:200px 0}}
+.image-placeholder{background:linear-gradient(90deg,#f6f6f6 25%,#eaeaea 50%,#f6f6f6 75%);background-size:400px 100%;animation:shimmer 1.4s infinite}
+
+@media (max-width:700px){
+  .feature p, .hero-sub{max-width:100%;padding:0 12px}
+}
+
+/* Testimonials */
+.testimonials-section{padding:34px 0;background: oklab(90% 0.01 0.01);background: #fbf7f2}
+/* allow the testimonials container to span full viewport width so the OKLab background covers edge-to-edge */
+.testimonials-section.container{max-width:none;width:100%;padding-left:28px;padding-right:28px;box-sizing:border-box;margin-left:0;margin-right:0}
+.testimonials-section h3{font-size:22px;margin-bottom:8px;text-align:center}
+.testimonials-subtitle{text-align:center;color:var(--muted);margin:0 0 18px 0}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+.testimonial-card{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(0,0,0,0.04);box-shadow:0 8px 24px rgba(0,0,0,0.12);max-width:360px;margin:0 auto}
+.testimonial-card .stars{font-size:16px;margin-bottom:8px}
+.testimonial-text{color:var(--muted);font-size:14px;margin-bottom:12px;line-height:1.5}
+.testimonial-author{display:flex;gap:8px;align-items:center}
+.author-avatar{width:40px;height:40px;border-radius:999px;background:#eee;display:flex;align-items:center;justify-content:center;font-weight:700}
+.author-name{font-weight:700}
+.author-role{font-size:13px;color:var(--muted)}
+
+.footer{background: oklab(94% 0.01 0.01);background: #fbf7f2;padding:34px 0;border-top:1px solid oklab(88% 0.02 0.02);border-top:1px solid #efe7dd;margin-top:24px}
+.footer .container{max-width:none;width:100%;padding-left:12px;padding-right:12px;box-sizing:border-box;margin-left:0;margin-right:0}
+.footer-grid{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:18px;align-items:start}
+.footer-column:first-child{display:flex;flex-direction:column;align-items:flex-start;padding-left:8px}
+.footer-logo{display:flex;align-items:center;gap:10px}
+.footer-logo .logo-icon{width:40px;height:40px;border-radius:9999px;overflow:hidden;background:var(--primary);display:flex;align-items:center;justify-content:center}
+.footer-logo .logo-icon img{width:22px;height:22px;object-fit:contain;display:block}
+.footer-column .footer-description{max-width:480px}
+.footer-column h4{margin:0 0 10px 0}
+.footer-description{color:var(--muted);margin:10px 0}
+.social-links{display:flex;gap:8px;margin-top:12px}
+.social-icon{width:40px;height:40px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background:#fde8f2;/* soft light pink */border:1px solid rgba(0,0,0,0.04);text-decoration:none;transition:background-color .18s ease,transform .12s ease,border-color .12s ease}
+.social-icon img{width:20px;height:20px;object-fit:contain;display:block}
+.social-icon:hover, .social-icon:focus{background:var(--primary);transform:translateY(-2px);border-color:var(--primary);outline:none}
+.social-icon:focus-visible{box-shadow:0 0 0 4px rgba(255,138,0,0.12)}
+.footer-links{list-style:none;padding:0;margin:0}
+.footer-links li{margin-bottom:6px}
+.footer-links a{color:#333;text-decoration:none}
+.footer-links a:hover{color:var(--primary)}
+.footer-links a.footer-link-active{color:var(--primary);font-weight:700}
+.footer-column h4{transition:color .12s ease}
+.footer-column h4:hover{color:var(--primary);cursor:pointer}
+.footer-column h4.footer-h4-active{color:var(--primary);font-weight:700}
+.footer-column h4.no-hover, .footer-column h4.no-hover:hover, .footer-column h4.no-hover.footer-h4-active{color:inherit;cursor:default}
+.footer-bottom{padding-top:18px;text-align:center;color:#777}
+
+@media(max-width:900px){
+  .testimonials-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+}
+
+/* Banner CTA (orange) */
+.banner-cta{background:linear-gradient(90deg,var(--primary),#ff9b33);color:#fff;padding:30px 0;margin-top:40px;border-radius:12px}
+.banner-inner{display:flex;align-items:center;justify-content:center}
+/* always stack vertically and center so the button sits under the text and everything is centered */
+.banner-content{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px}
+.banner-text h3{margin:0;font-size:22px;color:#000;line-height:1.4}
+.banner-text p{margin:4px 0 0;color:#000;opacity:0.95;line-height:1.7}
+.banner-actions{margin-left:0}
+.banner-btn{background:#fff;color:var(--primary);padding:12px 18px;border-radius:12px;font-weight:800;text-decoration:none;transition:background-color .18s ease,color .18s ease,transform .12s ease}
+/* hover: subtle translucent white, not orange */
+.banner-btn:hover{background:rgba(255,255,255,0.85);color:var(--primary);transform:translateY(-2px)}
+
+@media(max-width:900px){
+  .banner-content{align-items:flex-start}
+  .banner-actions{width:100%}
+  .banner-btn{display:inline-block;width:100%;text-align:center}
+}

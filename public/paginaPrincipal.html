@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DevDemy — Static Preview</title>
+  <link rel="stylesheet" href="stylesPrincipal.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-icon"><img src="images/logoBook.png" alt="DevDemy" /></div>
+        <div class="logo-text">DevDemy</div>
+      </div>
+      <nav class="nav">
+        <a href="#">Cursos</a>
+        <a href="#">Categorías</a>
+        <a href="#">Sobre Nosotros</a>
+        <a href="#contact">Contacto</a>
+      </nav>
+      <div class="actions">
+        <button class="btn ghost">Iniciar Sesión</button>
+        <button class="btn primary" id="signup">Registrarse</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-grid">
+          <div class="feature">
+            <div class="feature-icon"><img src="images/check1.png" alt="Certificados" /></div>
+            <h3>Certificados Oficiales</h3>
+            <p class="hero-sub">Obtén certificados reconocidos por la industria al completar cada curso</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon"><img src="images/aim.png" alt="Aprendizaje práctico" /></div>
+            <h3>Aprendizaje Práctico</h3>
+            <p class="hero-sub">Proyectos reales y ejercicios hands-on en cada lección</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon"><img src="images/rocket.png" alt="Soporte 24/7" /></div>
+            <h3>Soporte 24/7</h3>
+            <p class="hero-sub">Comunidad activa y mentores disponibles para ayudarte</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="explore container">
+      <div class="explore-header">
+        <div class="explore-title">
+            <div class="explore-icon"><img src="images/discover.png" alt="Explorar"></div>
+            <h2>Explora Cursos</h2>
+          </div>
+      </div>
+
+      <div class="columns">
+        <aside class="filters">
+          <h4 class="filters-title">Filtros</h4>
+          <h5 class="filter-subtitle">Categorías</h5>
+          <div id="categories" class="category-list"></div>
+
+          <h4 class="section-title">Cursos Destacados</h4>
+          <div id="featured"></div>
+        </aside>
+
+        <section class="courses">
+          <h3 id="courses-count">Cursos (0)</h3>
+          <div id="courses-grid" class="grid"></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="contact" class="banner-cta">
+      <div class="container banner-inner">
+        <div class="banner-content">
+          <div class="banner-text">
+            <h3>¿Listo para transformar tu carrera?</h3>
+            <p>Únete a más de 50,000 estudiantes que ya están aprendiendo gratis. Esta oferta termina el 31 de octubre.</p>
+          </div>
+          <div class="banner-actions">
+            <a id="cta-start" class="btn banner-btn" href="#">Comenzar Ahora Gratis</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Testimonials (copied from original interface) -->
+    <section id="testimonios" class="testimonials-section container">
+      <h3>Lo Que Dicen Nuestros Estudiantes</h3>
+      <p class="testimonials-subtitle">Miles de profesionales han transformado sus carreras con DevDemy</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"DevDemy cambió mi carrera completamente. Los cursos son claros, prácticos y me ayudaron a conseguir mi primer trabajo como desarrollador."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MC</div>
+            <div>
+              <div class="author-name">María Contreras</div>
+              <div class="author-role">Full Stack Developer</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"La mejor plataforma para aprender programación. El contenido es excelente y el soporte de la comunidad es increíble."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">JR</div>
+            <div>
+              <div class="author-name">Juan Rodríguez</div>
+              <div class="author-role">Data Scientist</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"Increíble que todo sea gratuito. La calidad es comparable a plataformas de pago. Totalmente recomendado."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">AL</div>
+            <div>
+              <div class="author-name">Ana López</div>
+              <div class="author-role">Frontend Developer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer (copied from original interface) -->
+    <footer id="contacto" class="footer">
+      <div class="container footer-grid">
+        <div class="footer-column">
+          <div class="footer-logo">
+              <span class="logo-icon"><img src="images/logoBook.png" alt="DevDemy" /></span>
+              <span class="logo-text">DevDemy</span>
+            </div>
+          <p class="footer-description">
+            La plataforma líder en educación tecnológica gratuita. Aprende, practica y consigue el trabajo de tus sueños.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Facebook"><img src="images/fb.png" alt="Facebook"></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><img src="images/twt.png" alt="Twitter"></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><img src="images/inst.png" alt="Instagram"></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4 class="no-hover">Cursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Desarrollo Web</a></li>
+            <li><a href="#">Ciencia de Datos</a></li>
+            <li><a href="#">Inteligencia Artificial</a></li>
+            <li><a href="#">Ciberseguridad</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4 class="no-hover">Empresa</h4>
+          <ul class="footer-links">
+            <li><a href="#">Sobre Nosotros</a></li>
+            <li><a href="#">Carreras</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Prensa</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4 class="no-hover">Legal</h4>
+          <ul class="footer-links">
+            <li><a href="#">Términos de Servicio</a></li>
+            <li><a href="#">Política de Privacidad</a></li>
+            <li><a href="#">Política de Cookies</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom container">
+        <p>&copy; 2025 DevDemy. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+  <!-- Modal overlay to load the main form (index.html) as a floating window -->
+  <div id="modalOverlay" style="display:none;position:fixed;inset:0;z-index:1200;align-items:center;justify-content:center;backdrop-filter:blur(2px);">
+    <div id="modalBackdrop" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);"></div>
+    <div id="modalContent" style="position:relative;max-width:1100px;width:94%;height:92%;border-radius:10px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4);background:transparent;">
+      <button id="modalClose" aria-label="Cerrar" style="position:absolute;right:10px;top:10px;z-index:1300;background:rgba(255,255,255,0.9);border:0;border-radius:999px;width:36px;height:36px;font-size:20px;cursor:pointer">×</button>
+      <iframe id="modalIframe" src="about:blank" style="width:100%;height:100%;border:0;background:transparent;" title="Formulario de inscripción"></iframe>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const overlay = document.getElementById('modalOverlay');
+      const backdrop = document.getElementById('modalBackdrop');
+      const iframe = document.getElementById('modalIframe');
+      const closeBtn = document.getElementById('modalClose');
+
+      function openModal(url){
+        iframe.src = url;
+        overlay.style.display = 'flex';
+        // center using flex
+        overlay.style.alignItems = 'center';
+        overlay.style.justifyContent = 'center';
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal(){
+        overlay.style.display = 'none';
+        // unload iframe to free memory and reset state
+        try{ iframe.src = 'about:blank'; }catch(e){}
+        document.body.style.overflow = '';
+      }
+
+      // Intercept enroll links generated by app.js (.enroll)
+      document.addEventListener('click', function(e){
+        const a = e.target.closest('a.enroll');
+        if(!a) return;
+        const href = a.getAttribute('href');
+        if(!href) return;
+        // If href points to index.html (our form), open in modal
+        if (href.indexOf('index.html') !== -1 || href.indexOf('/index.html') !== -1) {
+          e.preventDefault();
+          // preserve querystring if present
+          openModal(href);
+        }
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+      window.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+    })();
+  </script>
+</body>
+</html>
