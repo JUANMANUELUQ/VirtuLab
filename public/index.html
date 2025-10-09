@@ -3,283 +3,236 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Inscripción a Curso - DevDemy</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-  <style>
-    /* center the form card on an orange page background */
-    html, body {
-      height: 100%;
-    }
-    body {
-      margin: 0;
-      background: #ffa800; /* make the page background orange - the card is the main content */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 1rem 1rem;
-      overflow: auto; /* allow page scrolling if needed */
-    }
-
-    /* single card centered and scrollable internally when needed */
-    .card {
-      background: #ffffff;
-      width: 100%;
-      max-width: 1050px; /* increased card width for wider forms on large screens */
-      margin: 0 auto;
-      max-height: calc(100vh - 4rem);
-      overflow: auto;
-      -webkit-overflow-scrolling: touch;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-    }
-
-    /* Custom primary for Unirme al curso */
-    .btn-primary {
-      background: #ffa800;
-      border: none;
-      color: #fff;
-    }
-    .btn-primary:hover, .btn-primary:focus {
-      background: #ffb84d; /* lighter shade on hover/focus */
-      color: #fff;
-    }
-
-    /* Ensure card stays white and readable on orange background */
-    .card { background: #ffffff; }
-
-    /* Form title uses the brand color */
-    .card-body .h4 { color: #ffa800; }
-    /* Equal-width buttons (desktop) */
-    .btn-equal { width: 180px; }
-    @media (max-width: 480px) { .btn-equal { width: 100%; } }
-    /* Show red asterisk for the required visible fields (all except comentarios) */
-    label[for="tipoDocumento"]::after,
-    label[for="numeroDocumento"]::after,
-    label[for="nombres"]::after,
-    label[for="apellidos"]::after,
-    label[for="email"]::after,
-    label[for="celular"]::after,
-    label[for="curso"]::after {
-      content: " *";
-      color: #dc3545; /* bootstrap danger red */
-      font-weight: 700;
-      margin-left: 2px;
-    }
-  </style>
+  <title>DevDemy — Static Preview</title>
+  <link rel="stylesheet" href="stylesPrincipal.css" />
 </head>
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-icon"><img src="images/logoBook.png" alt="DevDemy" /></div>
+        <div class="logo-text">DevDemy</div>
+      </div>
+      <nav class="nav">
+        <a href="#">Cursos</a>
+        <a href="#">Categorías</a>
+        <a href="#">Sobre Nosotros</a>
+        <a href="#contact">Contacto</a>
+      </nav>
+      <div class="actions">
+        <button class="btn ghost">Iniciar Sesión</button>
+        <button class="btn primary" id="signup">Registrarse</button>
+      </div>
+    </div>
+  </header>
+
   <main>
-    <!-- keep the debug output used by script.js (id="out") so enviarAccion can write status -->
-    <pre id="out" style="display:none;">No hay envíos aún.</pre>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-grid">
+          <div class="feature">
+            <div class="feature-icon"><img src="images/check1.png" alt="Certificados" /></div>
+            <h3>Certificados Oficiales</h3>
+            <p class="hero-sub">Obtén certificados reconocidos por la industria al completar cada curso</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon"><img src="images/aim.png" alt="Aprendizaje práctico" /></div>
+            <h3>Aprendizaje Práctico</h3>
+            <p class="hero-sub">Proyectos reales y ejercicios hands-on en cada lección</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon"><img src="images/rocket.png" alt="Soporte 24/7" /></div>
+            <h3>Soporte 24/7</h3>
+            <p class="hero-sub">Comunidad activa y mentores disponibles para ayudarte</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="card shadow-sm">
-      <div class="card-body">
-        <h1 class="h4 mb-3">Formulario de Inscripción</h1>
-        <p class="form-note">Rellena los datos para unirte. Campos con <span class="text-danger">*</span> son obligatorios.</p>
+    <section class="explore container">
+      <div class="explore-header">
+        <div class="explore-title">
+            <div class="explore-icon"><img src="images/discover.png" alt="Explorar"></div>
+            <h2>Explora Cursos</h2>
+          </div>
+      </div>
 
-        <form id="inscripcionForm" class="needs-validation" novalidate>
-          <div class="row g-3">
-            <div class="col-md-6">
-              <label for="tipoDocumento" class="form-label required"><i class="bi bi-card-text me-1"></i>Tipo de documento</label>
-              <select id="tipoDocumento" name="tipoDocumento" class="form-select" required>
-                <option value="">Seleccione el Tipo de Documento</option>
-                <option value="tarjeta">Tarjeta de Identidad</option>
-                <option value="cc">Cédula de Ciudadanía</option>
-                <option value="ce">Cédula de Extranjería</option>
-              </select>
-              <div class="invalid-feedback">Selecciona un tipo de documento.</div>
-            </div>
+      <div class="columns">
+        <aside class="filters">
+          <h4 class="filters-title">Filtros</h4>
+          <h5 class="filter-subtitle">Categorías</h5>
+          <div id="categories" class="category-list"></div>
 
-            <div class="col-md-6">
-              <label for="numeroDocumento" class="form-label required"><i class="bi bi-123 me-1"></i>Número de documento</label>
-              <input type="text" inputmode="numeric" id="numeroDocumento" name="numeroDocumento" class="form-control" placeholder="Ej: 12345678" required minlength="5" maxlength="15" pattern="^[0-9]+$">
-              <div class="invalid-feedback">Ingresa solo números (5–15 dígitos).</div>
-            </div>
+          <h4 class="section-title">Cursos Destacados</h4>
+          <div id="featured"></div>
+        </aside>
 
-            <div class="col-md-6">
-              <label for="nombres" class="form-label required"><i class="bi bi-person me-1"></i>Nombres</label>
-              <input type="text" id="nombres" name="nombres" class="form-control" placeholder="Tus nombres" required pattern="^[A-Za-zÀ-ÿñÑ' -]{2,}$" minlength="2">
-              <div class="invalid-feedback">Ingresa tus nombres (solo letras, espacios y guiones).</div>
-            </div>
+        <section class="courses">
+          <h3 id="courses-count">Cursos (0)</h3>
+          <div id="courses-grid" class="grid"></div>
+        </section>
+      </div>
+    </section>
 
-            <div class="col-md-6">
-              <label for="apellidos" class="form-label required"><i class="bi bi-person me-1"></i>Apellidos</label>
-              <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Tus apellidos" required pattern="^[A-Za-zÀ-ÿñÑ' -]{2,}$" minlength="2">
-              <div class="invalid-feedback">Ingresa tus apellidos (solo letras, espacios y guiones).</div>
-            </div>
-
-            <div class="col-md-6">
-              <label for="email" class="form-label required"><i class="bi bi-envelope me-1"></i>Correo electrónico</label>
-              <input type="email" id="email" name="email" class="form-control" placeholder="nombre@ejemplo.com" required>
-              <div class="invalid-feedback">Ingresa un correo válido.</div>
-            </div>
-
-            <div class="col-md-6">
-              <label for="celular" class="form-label required"><i class="bi bi-phone me-1"></i>Número de celular</label>
-              <input type="tel" id="celular" name="celular" class="form-control" placeholder="Ej: +57 3001234567" required pattern="^[+0-9()\s-]{7,20}$">
-              <div class="invalid-feedback">Ingresa un número válido (7–20 caracteres; puede incluir +, espacios o guiones).</div>
-            </div>
-
-            <div class="col-12">
-              <label for="curso" class="form-label required"><i class="bi bi-book me-1"></i>Curso</label>
-              <select id="curso" name="curso" class="form-select" required>
-                <option value="">Selecciona el curso de interés...</option>
-                <option>Matemáticas generales</option>
-                <option>Cálculo</option>
-                <option>Diseño gráfico</option>
-                <option>Física</option>
-                <option>Inglés académico</option>
-                <option>Programación básica (Python)</option>
-                <option>Estadística aplicada</option>
-                <option>Investigación y metodología</option>
-                <option>Inteligencia artificial básica</option>
-                <option>Bases de datos</option>
-                <option>Redes y comunicaciones</option>
-                <option>Economía para ingenieros</option>
-                <option>Química práctica</option>
-                <option>Habilidades blandas y liderazgo</option>
-              </select>
-              <div class="invalid-feedback">Selecciona al menos un curso.</div>
-            </div>
-
-            <div class="col-12">
-              <label class="form-label"><i class="bi bi-chat-left-text me-1"></i>Comentarios (opcional)</label>
-              <textarea id="comentarios" name="comentarios" class="form-control" rows="3" placeholder="Algo que quieras que el instructor sepa..."></textarea>
-            </div>
-
-            <div class="col-12 d-flex justify-content-between align-items-center">
-              <div>
-                
-              </div>
-              <div style="display:flex;gap:0.5rem;">
-                <button class="btn btn-secondary me-2 btn-equal" type="reset">Limpiar</button>
-                <button id="envio" class="btn btn-primary btn-equal" type="submit">Unirme al curso</button>
-              </div>
+    <section id="contact" class="banner-cta">
+      <div class="container banner-inner">
+        <div class="banner-content">
+          <div class="banner-text">
+            <h3>¿Listo para transformar tu carrera?</h3>
+            <p>Únete a más de 50,000 estudiantes que ya están aprendiendo gratis. Esta oferta termina el 31 de octubre.</p>
+          </div>
+          <div class="banner-actions">
+            <a id="cta-start" class="btn banner-btn" href="#">Comenzar Ahora Gratis</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Testimonials (copied from original interface) -->
+    <section id="testimonios" class="testimonials-section container">
+      <h3>Lo Que Dicen Nuestros Estudiantes</h3>
+      <p class="testimonials-subtitle">Miles de profesionales han transformado sus carreras con DevDemy</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"DevDemy cambió mi carrera completamente. Los cursos son claros, prácticos y me ayudaron a conseguir mi primer trabajo como desarrollador."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MC</div>
+            <div>
+              <div class="author-name">María Contreras</div>
+              <div class="author-role">Full Stack Developer</div>
             </div>
           </div>
-        </form>
+        </div>
 
-        <div id="mensajeSalida" class="mt-4" aria-live="polite"></div>
+        <div class="testimonial-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"La mejor plataforma para aprender programación. El contenido es excelente y el soporte de la comunidad es increíble."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">JR</div>
+            <div>
+              <div class="author-name">Juan Rodríguez</div>
+              <div class="author-role">Data Scientist</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"Increíble que todo sea gratuito. La calidad es comparable a plataformas de pago. Totalmente recomendado."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">AL</div>
+            <div>
+              <div class="author-name">Ana López</div>
+              <div class="author-role">Frontend Developer</div>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <!-- Footer (copied from original interface) -->
+    <footer id="contacto" class="footer">
+      <div class="container footer-grid">
+        <div class="footer-column">
+          <div class="footer-logo">
+              <span class="logo-icon"><img src="images/logoBook.png" alt="DevDemy" /></span>
+              <span class="logo-text">DevDemy</span>
+            </div>
+          <p class="footer-description">
+            La plataforma líder en educación tecnológica gratuita. Aprende, practica y consigue el trabajo de tus sueños.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Facebook"><img src="images/fb.png" alt="Facebook"></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><img src="images/twt.png" alt="Twitter"></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><img src="images/inst.png" alt="Instagram"></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4 class="no-hover">Cursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Desarrollo Web</a></li>
+            <li><a href="#">Ciencia de Datos</a></li>
+            <li><a href="#">Inteligencia Artificial</a></li>
+            <li><a href="#">Ciberseguridad</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4 class="no-hover">Empresa</h4>
+          <ul class="footer-links">
+            <li><a href="#">Sobre Nosotros</a></li>
+            <li><a href="#">Carreras</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Prensa</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4 class="no-hover">Legal</h4>
+          <ul class="footer-links">
+            <li><a href="#">Términos de Servicio</a></li>
+            <li><a href="#">Política de Privacidad</a></li>
+            <li><a href="#">Política de Cookies</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom container">
+        <p>&copy; 2025 DevDemy. Todos los derechos reservados.</p>
+      </div>
+    </footer>
   </main>
 
-  <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+  <!-- Modal overlay to load the main form (index.html) as a floating window -->
+  <div id="modalOverlay" style="display:none;position:fixed;inset:0;z-index:1200;align-items:center;justify-content:center;backdrop-filter:blur(2px);">
+    <div id="modalBackdrop" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);"></div>
+    <div id="modalContent" style="position:relative;max-width:1100px;width:94%;height:92%;border-radius:10px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4);background:transparent;">
+      <button id="modalClose" aria-label="Cerrar" style="position:absolute;right:10px;top:10px;z-index:1300;background:rgba(255,255,255,0.9);border:0;border-radius:999px;width:36px;height:36px;font-size:20px;cursor:pointer">×</button>
+      <iframe id="modalIframe" src="about:blank" style="width:100%;height:100%;border:0;background:transparent;" title="Formulario de inscripción"></iframe>
+    </div>
+  </div>
 
   <script>
-    // Preserve the existing preselect + validation + submit logic.
-    (function preselectFromQuery(){
-      try {
-        const params = new URLSearchParams(window.location.search);
-        const cursoParam = params.get('curso');
-        if (!cursoParam) return;
-        const cursoDecoded = decodeURIComponent(cursoParam);
-        const select = document.getElementById('curso');
-        if (!select) return;
-        // Buscar option por texto o por value
-        let matched = Array.from(select.options).find(o => o.value === cursoDecoded || o.text === cursoDecoded);
-            if (matched) {
-              select.value = matched.value || matched.text;
-              select.classList.add('is-valid');
-              select.disabled = true;
-            } else {
-              const opt = document.createElement('option');
-              opt.text = cursoDecoded;
-              opt.value = cursoDecoded;
-              opt.selected = true;
-              select.appendChild(opt);
-              select.classList.add('is-valid');
-              select.disabled = true;
-            }
-      } catch (e) {
-        console.error('preselectFromQuery error', e);
+    (function(){
+      const overlay = document.getElementById('modalOverlay');
+      const backdrop = document.getElementById('modalBackdrop');
+      const iframe = document.getElementById('modalIframe');
+      const closeBtn = document.getElementById('modalClose');
+
+      function openModal(url){
+        iframe.src = url;
+        overlay.style.display = 'flex';
+        // center using flex
+        overlay.style.alignItems = 'center';
+        overlay.style.justifyContent = 'center';
+        document.body.style.overflow = 'hidden';
       }
+
+      function closeModal(){
+        overlay.style.display = 'none';
+        // unload iframe to free memory and reset state
+        try{ iframe.src = 'about:blank'; }catch(e){}
+        document.body.style.overflow = '';
+      }
+
+      // Intercept enroll links generated by app.js (.enroll)
+      document.addEventListener('click', function(e){
+        const a = e.target.closest('a.enroll');
+        if(!a) return;
+        const href = a.getAttribute('href');
+        if(!href) return;
+        // If href points to index.html (our form), open in modal
+        if (href.indexOf('index.html') !== -1 || href.indexOf('/index.html') !== -1) {
+          e.preventDefault();
+          // preserve querystring if present
+          openModal(href);
+        }
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+      window.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
     })();
-
-    
-    const form = document.getElementById('inscripcionForm');
-    const salida = document.getElementById('mensajeSalida');
-
-    // Field references (keep names/IDs used elsewhere)
-    const tipoDocumento = document.getElementById('tipoDocumento');
-    const numeroDocumento = document.getElementById('numeroDocumento');
-    const nombres = document.getElementById('nombres');
-    const apellidos = document.getElementById('apellidos');
-    const email = document.getElementById('email');
-    const celular = document.getElementById('celular');
-    const curso = document.getElementById('curso');
-
-    // Regex validators
-    const nameRegex = /^[A-Za-zÀ-ÿñÑ' -]{2,}$/;
-    const docRegex = /^[0-9]{5,15}$/; // only digits 5-15
-    const phoneRegex = /^[+0-9()\s-]{7,20}$/;
-
-    function checkField(field, testFn) {
-      const valid = testFn(field.value.trim());
-      field.classList.toggle('is-valid', valid);
-      field.classList.toggle('is-invalid', !valid);
-      return valid;
-    }
-
-    numeroDocumento.addEventListener('input', () => checkField(numeroDocumento, v => docRegex.test(v)));
-    nombres.addEventListener('input', () => checkField(nombres, v => nameRegex.test(v)));
-    apellidos.addEventListener('input', () => checkField(apellidos, v => nameRegex.test(v)));
-    email.addEventListener('input', () => checkField(email, v => email.checkValidity()));
-    celular.addEventListener('input', () => checkField(celular, v => phoneRegex.test(v)));
-    tipoDocumento.addEventListener('change', () => checkField(tipoDocumento, v => tipoDocumento.value !== ''));
-    curso.addEventListener('change', () => checkField(curso, v => curso.value !== ''));
-
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-
-      let valid = true;
-      if (!checkField(tipoDocumento, v => tipoDocumento.value !== '')) valid = false;
-      if (!checkField(numeroDocumento, v => docRegex.test(v))) valid = false;
-      if (!checkField(nombres, v => nameRegex.test(v))) valid = false;
-      if (!checkField(apellidos, v => nameRegex.test(v))) valid = false;
-      if (!checkField(email, v => email.checkValidity())) valid = false;
-      if (!checkField(celular, v => phoneRegex.test(v))) valid = false;
-      if (!checkField(curso, v => curso.value !== '')) valid = false;
-
-      form.classList.add('was-validated');
-
-      if (!valid) {
-        salida.innerHTML = '<div class="alert alert-danger" role="alert">Hay errores en el formulario. Revisa los campos marcados en rojo.</div>';
-        salida.scrollIntoView({behavior: 'smooth'});
-        return;
-      }
-
-      // Build summary (kept for debugging if needed)
-      const resumen = `\nTipo documento: ${tipoDocumento.options[tipoDocumento.selectedIndex].text}\nDocumento: ${numeroDocumento.value}\nNombre: ${nombres.value} ${apellidos.value}\nCorreo: ${email.value}\nCelular: ${celular.value}\nCurso: ${curso.value}\nComentarios: ${document.getElementById('comentarios').value}`;
-
-      // Do not show an on-page notification; keep behavior silent and reset the form.
-      form.reset();
-      form.classList.remove('was-validated');
-      [numeroDocumento, nombres, apellidos, email, celular, tipoDocumento, curso].forEach(f => f.classList.remove('is-valid'));
-    }, false);
-
-    form.addEventListener('reset', () => {
-      // preserve curso selection and disabled state across reset
-      const cursoValue = curso.value;
-      const cursoDisabled = curso.disabled;
-      setTimeout(() => {
-        form.classList.remove('was-validated');
-        [numeroDocumento, nombres, apellidos, email, celular, tipoDocumento].forEach(f => {
-          f.classList.remove('is-valid');
-          f.classList.remove('is-invalid');
-        });
-        // restore curso value and disabled state
-        try {
-          curso.value = cursoValue;
-          curso.disabled = cursoDisabled;
-        } catch (e) { /* ignore */ }
-        salida.innerHTML = '';
-      }, 0);
-    });
   </script>
 </body>
 </html>

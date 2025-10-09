@@ -7,9 +7,8 @@ function verificarPrimeraVisita() {
   if (visitado === null) {
     enviarAccion('Visita',null,null,null);
     localStorage.setItem("visitado", "true");
-  } else {
-    // previously showed an alert here; removed to avoid annoying popups
-  }
+  } 
+  //Anteriormente aqui estaba el else, pero no es necesario hacer nada si ya ha visitado
 }
 
 async function getUserIP() {
