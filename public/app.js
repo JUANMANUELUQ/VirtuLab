@@ -587,7 +587,7 @@ function renderGrid(){
         <div class="desc">${c.description}</div>
         <div class="meta"><div><small>⏱ ${c.duration}</small></div><div><small>⭐ ${c.rating}</small></div></div>
         <div class="price"><div class="text-price">GRATIS</div><div class="text-old" style="text-decoration:line-through;color:#999">$${c.originalPrice}</div></div>
-        <a class="enroll" href="index.html?curso=${encodeURIComponent(c.title)}">Inscribirse Ahora</a>
+        <a class="enroll" href="formulario.html?curso=${encodeURIComponent(c.title)}">Inscribirse Ahora</a>
       </div>
     `
     // make the whole card keyboard-focusable so :focus-within CSS works and keyboard users get the same affordance

@@ -19,10 +19,6 @@
         <a href="#">Sobre Nosotros</a>
         <a href="#contact">Contacto</a>
       </nav>
-      <div class="actions">
-        <button class="btn ghost">Iniciar Sesión</button>
-        <button class="btn primary" id="signup">Registrarse</button>
-      </div>
     </div>
   </header>
 
@@ -222,7 +218,7 @@
         const href = a.getAttribute('href');
         if(!href) return;
         // If href points to index.html (our form), open in modal
-        if (href.indexOf('index.html') !== -1 || href.indexOf('/index.html') !== -1) {
+        if (href.indexOf('formulario.html') !== -1 || href.indexOf('/formulario.html') !== -1) {
           e.preventDefault();
           // preserve querystring if present
           openModal(href);
