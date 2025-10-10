@@ -1,5 +1,3 @@
-verificarPrimeraVisita();
-
 function verificarPrimeraVisita() {
       
   let visitado = localStorage.getItem("visitado");
@@ -9,6 +7,26 @@ function verificarPrimeraVisita() {
     localStorage.setItem("visitado", "true");
   } 
   //Anteriormente aqui estaba el else, pero no es necesario hacer nada si ya ha visitado
+}
+
+function verificarEntradaFormulario() {
+      
+  let formulario = localStorage.getItem("formulario");
+
+  if (formulario === null) {
+    enviarAccion('Formulario',null,null,null);
+    localStorage.setItem("formulario", "true");
+  } 
+}
+
+function verificarEntradaTerminosCondiciones() {
+      
+  let terminosCondiciones = localStorage.getItem("terminosCondiciones");
+
+  if (terminosCondiciones === null) {
+    enviarAccion('TerminosCondiciones',null,null,null);
+    localStorage.setItem("terminosCondiciones", "true");
+  } 
 }
 
 async function getUserIP() {
@@ -30,37 +48,23 @@ getUserIP().then(ip => {
 // script.js
 async function enviarAccion(accion,nombre,email,ip) {
   try {
-    const out = document.getElementById('out');
-    out.textContent = 'Enviando...';
-
+    console.log("1");
     const resp = await fetch('/api/guardar', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ accion,nombre,email,ip })
     });
+    console.log("2");
 
     const data = await resp.json();
+    console.log("3");
     if (!resp.ok) {
-      out.textContent = 'Error: ' + (data.error || JSON.stringify(data));
       return;
     }
-
+    console.log("4");
     out.textContent = 'OK: ' + JSON.stringify(data, null, 2);
-    // If this was a form submission ('Envio'), navigate back to the main page after a short delay
-    if (accion === 'Envio') {
-      setTimeout(() => { window.location.href = 'paginaPrincipal.html'; }, 700);
-    }
+    console.log("5");
   } catch (err) {
     document.getElementById('out').textContent = 'Error de red: ' + err.message;
   }
 }
-
-document.getElementById('envio').addEventListener('click', () => {
-  const nombres = document.getElementById('nombres').value;
-  const apellidos = document.getElementById('apellidos').value;
-  const nombreCompleto=nombres.trim()+" "+apellidos.trim();
-  const email = document.getElementById('email').value;
-  getUserIP().then(ip => {
-       enviarAccion('Envio',nombreCompleto,email,ip)
-  })
-});

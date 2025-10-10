@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DevDemy — Sobre Nosotros</title>
+  <meta name="description" content="DevDemy: educación virtual práctica y accesible en tecnología, creatividad y ciencia. Misión, visión, equipo y metodología." />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="stylesPrincipal.css" />
+  <style>
+    :root{
+      --brand-1: #ff8a00;
+      --brand-2: #ff5a00;
+      --muted: #6c757d;
+      --card-radius: 14px;
+      --accent: #ff6f00;
+    }
+    body{
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: #f7f8fa;
+      color: #222;
+    }
+    .topbar{
+      background: linear-gradient(90deg,var(--brand-1),var(--brand-2));
+      color: #fff;
+      padding: 48px 0;
+      border-bottom-left-radius: 18px;
+      border-bottom-right-radius: 18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+    .brand{
+      font-weight:700;
+      color: #fff;
+      letter-spacing: .3px;
+    }
+    .hero-sub{ color: rgba(255,255,255,0.95); }
+    .section-title{
+      font-weight:700;
+      font-size:1.5rem;
+      margin-bottom:1rem;
+    }
+    .value-card{
+      border-radius: 12px;
+      padding: 18px;
+      background: #fff;
+      box-shadow: 0 6px 18px rgba(15,15,15,0.04);
+      height:100%;
+    }
+    .metric{
+      background: linear-gradient(180deg,#fff,#fff);
+      border-radius: 12px;
+      padding: 18px;
+      text-align:center;
+      box-shadow: 0 6px 18px rgba(10,10,10,0.04);
+    }
+    .team-card{
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .timeline{
+      position: relative;
+      padding-left: 28px;
+    }
+    .timeline::before{
+      content: "";
+      position: absolute;
+      left: 12px;
+      top: 4px;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg,var(--brand-1),var(--brand-2));
+      border-radius: 4px;
+    }
+    .timeline-item{
+      margin-bottom: 26px;
+    }
+    .timeline-bullet{
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      border: 4px solid var(--brand-1);
+      position: absolute;
+      left: 2px;
+      top: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    footer{
+      background:#fff;
+      border-top: 1px solid #eee;
+      padding: 28px 0;
+    }
+    .card-cta{
+      background: linear-gradient(90deg,var(--brand-1),var(--brand-2));
+      color: #fff;
+      border-radius: 10px;
+      padding: 10px 18px;
+      display:inline-block;
+      font-weight:700;
+      box-shadow: 0 8px 24px rgba(255,110,0,0.12);
+    }
+    .logo-circle{
+      width:44px;height:44px;border-radius:8px;background:#fff;padding:6px;color:var(--brand-2);font-weight:700;display:inline-flex;align-items:center;justify-content:center;
+    }
+    /* Responsive tweaks */
+    @media (max-width:767px){
+      .topbar{ padding:28px 0; text-align:center; }
+      .logo-circle{ margin-right:8px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-icon"><img src="images/logoBook.png" alt="DevDemy" /></div>
+        <div class="logo-text">DevDemy</div>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Cursos</a>
+        <a href="nosotros.html">Sobre Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+<!-- HERO / TOP -->
+<section class="topbar">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <h1 class="display-6 fw-bold">Sobre DevDemy</h1>
+        <p class="lead hero-sub">Llevamos la educación práctica y actualizada a cualquier persona con acceso a internet. Aprendizaje por proyectos, mentores reales y rutas de formación que conectan con el mundo laboral.</p>
+        <div class="mt-3">
+          <a href="#mision" class="btn btn-light btn-lg me-2">Nuestra Misión</a>
+          <a href="#contacto" class="btn btn-outline-light btn-lg">Contáctanos</a>
+        </div>
+      </div>
+      <div class="col-lg-4 d-none d-lg-block text-end">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=1a6b5e1606d708e6e7e9e6a9c1f0d4b4" alt="Educación virtual" class="img-fluid rounded-3 shadow" style="max-height:180px; object-fit:cover;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN CONTAINER -->
+<main class="container my-5" id="sobre">
+
+  <!-- Mission / Vision -->
+  <div class="row g-4 align-items-center">
+    <div class="col-lg-6">
+      <h2 id="mision" class="section-title">Nuestra Misión</h2>
+      <p>En DevDemy creemos que la educación debe ser práctica, accesible y centrada en resultados. Nuestra misión es diseñar rutas de aprendizaje que permitan a cualquier persona —independientemente de su contexto— adquirir competencias útiles en tecnología, diseño y ciencia, mediante cursos online con proyectos reales, retroalimentación de mentores y una comunidad activa que acompaña el proceso.</p>
+      <h4 class="mt-4">Nuestra Visión</h4>
+      <p>Ser la plataforma de referencia en América Latina para la formación práctica en carreras tecnológicas y creativas, reconocida por su calidad pedagógica, su compromiso con la inclusión y por facilitar la empleabilidad de nuestros estudiantes.</p>
+    </div>
+    <div class="col-lg-6">
+      <h2 class="section-title">Qué nos mueve</h2>
+      <ul class="list-unstyled">
+        <li class="d-flex mb-3">
+          <div class="me-3 display-6 text-warning"><i class="bi bi-lightning-charge-fill"></i></div>
+          <div>
+            <strong>Aprendizaje basado en proyectos</strong>
+            <div class="text-muted small">Cada curso incluye proyectos que simulan situaciones reales de trabajo para asegurar que los conocimientos sean aplicables.</div>
+          </div>
+        </li>
+        <li class="d-flex mb-3">
+          <div class="me-3 display-6 text-warning"><i class="bi bi-people-fill"></i></div>
+          <div>
+            <strong>Mentoría y comunidad</strong>
+            <div class="text-muted small">Mentores disponibles para feedback y una comunidad de estudiantes que comparte recursos, dudas y oportunidades.</div>
+          </div>
+        </li>
+        <li class="d-flex mb-3">
+          <div class="me-3 display-6 text-warning"><i class="bi bi-globe2"></i></div>
+          <div>
+            <strong>Accesibilidad</strong>
+            <div class="text-muted small">Contenidos optimizados para conexión limitada, opciones de subtítulos y recursos descargables.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <!-- Values -->
+  <div class="row g-4">
+    <div class="col-12 col-lg-4">
+      <h3 class="section-title">Nuestros Valores</h3>
+      <p class="text-muted">Principios que guían cada decisión editorial, curricular y operativa en DevDemy.</p>
+      <div class="row g-3">
+        <div class="col-12">
+          <div class="value-card d-flex gap-3">
+            <div class="fs-3 text-warning"><i class="bi bi-award"></i></div>
+            <div>
+              <strong>Calidad</strong>
+              <div class="text-muted small">Contenidos revisados por profesionales y actualizados periódicamente.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="value-card d-flex gap-3">
+            <div class="fs-3 text-warning"><i class="bi bi-universal-access"></i></div>
+            <div>
+              <strong>Inclusión</strong>
+              <div class="text-muted small">Precios escalonados, becas parciales y formación pensada para diferentes niveles.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="value-card d-flex gap-3">
+            <div class="fs-3 text-warning"><i class="bi bi-people"></i></div>
+            <div>
+              <strong>Transparencia</strong>
+              <div class="text-muted small">Política clara de certificación y evaluación; opiniones visibles de estudiantes.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pedagogy & Format -->
+    <div class="col-12 col-lg-8">
+      <h3 class="section-title">Cómo enseñamos — modelo pedagógico</h3>
+      <p class="text-muted">Hemos diseñado un modelo mixto que combina lo mejor de la educación formal y la metodología práctica demandada por la industria.</p>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="card p-3">
+            <h5>Microcursos y rutas de formación</h5>
+            <p class="small text-muted">Ofrecemos microcursos para aprender habilidades puntuales y rutas integradas (especializaciones) que preparan para roles específicos.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card p-3">
+            <h5>Proyectos reales</h5>
+            <p class="small text-muted">Cada módulo incluye ejercicios hands-on y un proyecto final con criterios de evaluación claros.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card p-3">
+            <h5>Mentores y feedback personalizado</h5>
+            <p class="small text-muted">Mentores expertos revisan entregables y ofrecen retroalimentación accionable.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card p-3">
+            <h5>Evaluación práctica</h5>
+            <p class="small text-muted">Evaluamos por desempeño: resolución de problemas y calidad del proyecto, no solo por exámenes teóricos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <!-- Timeline -->
+  <div class="row">
+    <div class="col-lg-7">
+      <h3 class="section-title">Nuestra trayectoria</h3>
+      <p class="text-muted">Pequeños hitos que muestran cómo hemos crecido manteniendo el foco en calidad y acceso.</p>
+
+      <div class="timeline mt-4">
+        <div class="timeline-item position-relative">
+          <div class="timeline-bullet"></div>
+          <div class="ms-5">
+            <h5>2017 — Fundación</h5>
+            <p class="small text-muted">DevDemy nace como iniciativa de un grupo de docentes y desarrolladores que querían llevar formación práctica a estudiantes de la región.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item position-relative">
+          <div class="timeline-bullet" style="border-color:var(--brand-2)"></div>
+          <div class="ms-5">
+            <h5>2019 — Primera plataforma propia</h5>
+            <p class="small text-muted">Lanzamos nuestra plataforma de cursos con contenidos en programación, diseño y matemáticas aplicadas.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item position-relative">
+          <div class="timeline-bullet"></div>
+          <div class="ms-5">
+            <h5>2021 — Crecimiento y mentoría</h5>
+            <p class="small text-muted">Integración de mentores y modelos de evaluación por proyectos. Aumenta la tasa de finalización de cursos.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item position-relative">
+          <div class="timeline-bullet" style="border-color:var(--brand-2)"></div>
+          <div class="ms-5">
+            <h5>2023 — Comunidades locales</h5>
+            <p class="small text-muted">Iniciamos programas locales con centros comunitarios y alianzas para becas.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item position-relative">
+          <div class="timeline-bullet"></div>
+          <div class="ms-5">
+            <h5>2025 — Hacia el futuro</h5>
+            <p class="small text-muted">Continuamos ampliando el catálogo de cursos, mejorando accesibilidad y desarrollando rutas profesionales en áreas de alta demanda.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Impact metrics -->
+    <div class="col-lg-5">
+      <h3 class="section-title">Impacto medible</h3>
+      <p class="text-muted">Datos aproximados que reflejan el trabajo colectivo de estudiantes, mentores y aliados.</p>
+      <div class="row g-3 mt-3">
+        <div class="col-6">
+          <div class="metric">
+            <div class="fs-3 fw-bold count" data-target="1500">0</div>
+            <div class="small text-muted">Estudiantes inscritos</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="metric">
+            <div class="fs-3 fw-bold count" data-target="38">0</div>
+            <div class="small text-muted">Cursos y microcursos</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="metric">
+            <div class="fs-3 fw-bold count" data-target="200">0</div>
+            <div class="small text-muted">Horas de contenido</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="metric">
+            <div class="fs-3 fw-bold count" data-target="4.7">0</div>
+            <div class="small text-muted">Satisfacción promedio (sobre 5)</div>
+          </div>
+        </div>
+      </div>
+      <p class="mt-3 small text-muted">Estas cifras se actualizan continuamente en nuestros reportes internos y con feedback de la comunidad.</p>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <!-- Team -->
+  <div class="row g-4">
+    <div class="col-12">
+      <h3 class="section-title">Equipo</h3>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="team-card p-3">
+        <img src="https://cdn.pixabay.com/photo/2021/01/16/18/19/man-5923036_1280.jpg" class="img-fluid" alt="Fundador" style="height:160px; object-fit:cover;">
+        <div class="p-3">
+          <h5 class="mb-0">Juan Martínez</h5>
+          <small class="text-muted">Fundador & CEO</small>
+          <p class="small mt-2 text-muted">Ingeniero de software con experiencia en formación. Lidera la visión estratégica y las alianzas académicas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="team-card p-3">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=98f5f96a6d2b4da9b8f0c4c97c2b8d02" class="img-fluid" alt="CTO" style="height:160px; object-fit:cover;">
+        <div class="p-3">
+          <h5 class="mb-0">Laura Gómez</h5>
+          <small class="text-muted">CTO</small>
+          <p class="small mt-2 text-muted">Coordina la infraestructura tecnológica y la experiencia en la plataforma.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="team-card p-3">
+        <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=4f7a5c3b2b1b4d9a8c9b2b2496a3e2f9" class="img-fluid" alt="Curriculum" style="height:160px; object-fit:cover;">
+        <div class="p-3">
+          <h5 class="mb-0">Andrés Ruiz</h5>
+          <small class="text-muted">Head de Currículo</small>
+          <p class="small mt-2 text-muted">Diseñador instruccional que aseguran que los cursos respondan a competencias reales del mercado.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+      <div class="team-card p-3">
+        <img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=7e832b5d9f1b6f02f9a4fd3c9d2a9cfa" class="img-fluid" alt="Mentoría" style="height:160px; object-fit:cover;">
+        <div class="p-3">
+          <h5 class="mb-0">María Bermúdez</h5>
+          <small class="text-muted">Jefa de Mentores</small>
+          <p class="small mt-2 text-muted">Coordina a los mentores, evalúa entregables y gestiona la formación continua del equipo docente.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="my-5">
+
+  <!-- Testimonials -->
+  <div class="row">
+    <div class="col-lg-8">
+      <h3 class="section-title">Lo que dicen los estudiantes</h3>
+      <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active p-4" style="background:#fff;border-radius:12px;">
+            <p class="mb-1">"Las clases prácticas y el feedback del mentor me ayudaron a construir un portafolio que me permitió conseguir mi primer empleo como desarrollador junior."</p>
+            <small class="text-muted">— Camila R., exalumna</small>
+          </div>
+          <div class="carousel-item p-4" style="background:#fff;border-radius:12px;">
+            <p class="mb-1">"Aprecio que los cursos se actualizan y que hay ejercicios que simulan problemas reales. La comunidad también fue clave."</p>
+            <small class="text-muted">— Diego M., estudiante</small>
+          </div>
+          <div class="carousel-item p-4" style="background:#fff;border-radius:12px;">
+            <p class="mb-1">"Las rutas de especialización me ayudaron a entender qué aprender para entrar en data engineering."</p>
+            <small class="text-muted">— Valeria S., profesional</small>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="col-lg-4">
+      <h3 class="section-title">Preguntas frecuentes</h3>
+      <div class="accordion" id="faq">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq1">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c1">¿Los cursos tienen certificación?</button>
+          </h2>
+          <div id="c1" class="accordion-collapse collapse" data-bs-parent="#faq">
+            <div class="accordion-body">Sí, ofrecemos certificados de finalización. Para algunas rutas y partners, también existen certificaciones con reconocimiento profesional según el curso.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq2">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c2">¿Necesito experiencia previa?</button>
+          </h2>
+          <div id="c2" class="accordion-collapse collapse" data-bs-parent="#faq">
+            <div class="accordion-body">No necesariamente. Indicamos el nivel recomendado (principiante, intermedio o avanzado) en la descripción del curso y ofrecemos rutas que comienzan desde cero.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq3">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c3">¿Ofrecen becas?</button>
+          </h2>
+          <div id="c3" class="accordion-collapse collapse" data-bs-parent="#faq">
+            <div class="accordion-body">Sí. Contamos con becas parciales y promociones periódicas. También trabajamos con organizaciones para becas completas en programas específicos.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <!-- Partners / Tech -->
+  <div class="row g-4 align-items-center">
+    <div class="col-lg-6">
+      <h3 class="section-title">Con quién trabajamos</h3>
+      <p class="text-muted">Colaboramos con empresas, profesionales y comunidades tecnológicas para mantener cursos relevantes y facilitar el puente hacia oportunidades laborales.</p>
+      <ul class="list-unstyled small text-muted">
+        <li>— Colaboraciones con profesionales de la industria para contenidos y revisión técnica.</li>
+        <li>— Integraciones con herramientas de desarrollo y plataformas de despliegue para prácticas reales.</li>
+        <li>— Programas de empleabilidad con empresas locales y bolsas de trabajo.</li>
+      </ul>
+    </div>
+    <div class="col-lg-6">
+      <h3 class="section-title">Tecnología y calidad</h3>
+      <p class="text-muted small">Nuestra plataforma prioriza la estabilidad, el rendimiento y la accesibilidad:</p>
+      <ul class="list-unstyled small text-muted">
+        <li>— Plataforma web responsiva y adaptada a conexiones lentas.</li>
+        <li>— Subtítulos y transcripciones en varios cursos.</li>
+        <li>— Backups, cifrado y políticas de privacidad responsables.</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <!-- Contact -->
+  <div class="row" id="contacto">
+    <div class="col-lg-6">
+      <h3 class="section-title">Contacto</h3>
+      <p class="text-muted">¿Tienes preguntas sobre cursos, alianzas o becas? Escríbenos y te responderemos en menos de 48 horas.</p>
+      <form id="contactForm" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="name" required>
+          <div class="invalid-feedback">Por favor ingresa tu nombre.</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Correo electrónico</label>
+          <input type="email" class="form-control" id="email" required>
+          <div class="invalid-feedback">Introduce un correo válido.</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Asunto</label>
+          <input type="text" class="form-control" id="subject" required>
+          <div class="invalid-feedback">Indica el asunto.</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Mensaje</label>
+          <textarea class="form-control" id="message" rows="4" required></textarea>
+          <div class="invalid-feedback">Escribe tu mensaje.</div>
+        </div>
+        <button class="btn btn-primary" type="submit">Enviar mensaje</button>
+        <button type="button" class="btn btn-outline-secondary ms-2" onclick="window.print()">Imprimir</button>
+      </form>
+      <div id="contactNote" class="mt-3 small text-success" style="display:none;">Gracias — tu mensaje ha sido enviado (simulado). Te responderemos pronto.</div>
+    </div>
+
+    <div class="col-lg-6">
+      <h3 class="section-title">Oficinas y soporte</h3>
+      <p class="text-muted small">Operamos de forma remota con centros aliados en varias ciudades. Nuestro equipo de soporte está disponible vía correo y chat.</p>
+      <ul class="list-unstyled small text-muted">
+        <li><strong>Email:</strong> soporte@devdemy.example</li>
+        <li><strong>Horario:</strong> Lunes a Viernes, 8:00–18:00 (GMT-5)</li>
+        <li><strong>Teléfono (opcional):</strong> +57 300 000 0000</li>
+      </ul>
+      <div class="mt-3">
+        <a href="index.html" class="card-cta">Explora nuestros cursos</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <div class="d-flex align-items-center gap-3">
+          <div class="logo-circle"><i class="bi bi-book-half"></i></div>
+          <div>
+            <strong>DevDemy</strong>
+            <div class="small text-muted">Educación práctica en tecnología, diseño y ciencia.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 text-md-end mt-3 mt-md-0">
+        <a class="text-muted me-3" href="#"><i class="bi bi-facebook"></i></a>
+        <a class="text-muted me-3" href="#"><i class="bi bi-twitter"></i></a>
+        <a class="text-muted me-3" href="#"><i class="bi bi-instagram"></i></a>
+        <div class="small text-muted mt-2">© DevDemy — Todos los derechos reservados.</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', function(e){
+      const target = document.querySelector(this.getAttribute('href'));
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+
+  // Counter animation when in view
+  const counters = document.querySelectorAll('.count');
+  const counterObserver = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const target = parseFloat(el.getAttribute('data-target'));
+        if(!el.dataset.started){
+          el.dataset.started = 'true';
+          let start = 0;
+          const isFloat = (target % 1 !== 0);
+          const duration = 1400;
+          const stepTime = 16;
+          const steps = Math.ceil(duration / stepTime);
+          const increment = (target - start) / steps;
+          let current = start;
+          const interval = setInterval(()=>{
+            current += increment;
+            if((increment > 0 && current >= target) || (increment < 0 && current <= target)){
+              current = target;
+              clearInterval(interval);
+            }
+            el.textContent = isFloat ? current.toFixed(1) : Math.floor(current).toLocaleString();
+          }, stepTime);
+        }
+        counterObserver.unobserve(el);
+      }
+    });
+  }, {threshold:0.4});
+  counters.forEach(c=>counterObserver.observe(c));
+
+  // Contact form validation and simulated send
+  (function(){
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){
+        form.classList.add('was-validated');
+        return;
+      }
+      // simulate sending
+      const note = document.getElementById('contactNote');
+      note.style.display = 'block';
+      form.reset();
+      setTimeout(()=> note.style.display='none', 7000);
+    }, false);
+  })();
+
+  // Small UX: collapse navbar on click (mobile)
+  document.querySelectorAll('.navbar-nav .nav-link').forEach(link=>{
+    link.addEventListener('click', ()=> {
+      const bsCollapse = document.querySelector('.navbar-collapse');
+      if(bsCollapse && bsCollapse.classList.contains('show')){
+        new bootstrap.Collapse(bsCollapse).hide();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

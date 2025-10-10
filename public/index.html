@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>DevDemy — Static Preview</title>
   <link rel="stylesheet" href="stylesPrincipal.css" />
+
+
+
 </head>
 <body>
   <header class="site-header">
@@ -14,9 +17,8 @@
         <div class="logo-text">DevDemy</div>
       </div>
       <nav class="nav">
-        <a href="#">Cursos</a>
-        <a href="#">Categorías</a>
-        <a href="#">Sobre Nosotros</a>
+        <a href="index.html">Cursos</a>
+        <a href="nosotros.html">Sobre Nosotros</a>
         <a href="#contact">Contacto</a>
       </nav>
     </div>
@@ -75,7 +77,7 @@
         <div class="banner-content">
           <div class="banner-text">
             <h3>¿Listo para transformar tu carrera?</h3>
-            <p>Únete a más de 50,000 estudiantes que ya están aprendiendo gratis. Esta oferta termina el 31 de octubre.</p>
+            <p>Únete a más de 50,000 estudiantes que ya están aprendiendo gratis. Esta oferta termina el 16 de octubre.</p>
           </div>
           <div class="banner-actions">
             <a id="cta-start" class="btn banner-btn" href="#">Comenzar Ahora Gratis</a>
@@ -178,7 +180,10 @@
     </footer>
   </main>
 
+  <script src="script.js"></script>
+
   <script src="app.js"></script>
+  
   <!-- Modal overlay to load the main form (index.html) as a floating window -->
   <div id="modalOverlay" style="display:none;position:fixed;inset:0;z-index:1200;align-items:center;justify-content:center;backdrop-filter:blur(2px);">
     <div id="modalBackdrop" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);"></div>
@@ -189,6 +194,7 @@
   </div>
 
   <script>
+    verificarPrimeraVisita();
     (function(){
       const overlay = document.getElementById('modalOverlay');
       const backdrop = document.getElementById('modalBackdrop');

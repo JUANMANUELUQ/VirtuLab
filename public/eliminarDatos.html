@@ -55,15 +55,17 @@
     De esta manera, podrás simular que un usuario entra por primera vez a tu web.
   </p>
 
-  <button onclick="eliminarVisitado()">Eliminar variable "visitado"</button>
+  <button onclick="eliminarVisitado()">Eliminar todas las variables</button>
 
   <div id="resultado"></div>
 
   <script>
     function eliminarVisitado() {
       localStorage.removeItem("visitado");
+      localStorage.removeItem("formulario");
+      localStorage.removeItem("terminosCondiciones");
       document.getElementById("resultado").innerText = 
-        '✅ La variable "visitado" ha sido eliminada del localStorage.';
+        '✅ La variables han sido eliminadas del localStorage.';
     }
   </script>
 </body>

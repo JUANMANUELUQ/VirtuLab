@@ -42,7 +42,7 @@ body{font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial; backgro
 .btn.ghost:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
 
 /* Nav link hover: match original frontend behavior */
-.nav a{margin:0 8px;color:#333;text-decoration:none;font-weight:600;transition:color .18s ease}
+.nav a{margin:0 12px;color:#333;text-decoration:none;font-weight:600;transition:color .18s ease}
 .nav a:hover{color:var(--primary)}
 
 .hero{background:linear-gradient(180deg,var(--primary),#ff9b33);padding:28px 0;color:#fff}

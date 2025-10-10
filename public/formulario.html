@@ -68,12 +68,79 @@
       font-weight: 700;
       margin-left: 2px;
     }
+
+
+    /* Estilos para el modal */
+    .modal {
+      display: none; 
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      animation: fadeIn 0.4s;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #000;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background: #f57c00;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .btn:hover {
+      background: #e65100;
+    }
+
+
   </style>
 </head>
 <body>
+
+  <!-- Modal -->
+  <div id="registroModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarModal()">&times;</span>
+      <h2>Registro Exitoso ✅</h2>
+      <p>Te has registrado correctamente en el curso.</p>
+      <p>Revisa tu correo, pronto recibirás más información.</p>
+      <button class="btn" onclick="cerrarModal()">Aceptar</button>
+    </div>
+  </div>
+
   <main>
-    <!-- keep the debug output used by script.js (id="out") so enviarAccion can write status -->
-    <pre id="out" style="display:none;">No hay envíos aún.</pre>
 
     <div class="card shadow-sm">
       <div class="card-body">
@@ -95,7 +162,7 @@
 
             <div class="col-md-6">
               <label for="numeroDocumento" class="form-label required"><i class="bi bi-123 me-1"></i>Número de documento</label>
-              <input type="text" inputmode="numeric" id="numeroDocumento" name="numeroDocumento" class="form-control" placeholder="Ej: 12345678" required minlength="5" maxlength="15" pattern="^[0-9]+$">
+              <input type="text" inputmode="numeric" id="numeroDocumento" name="numeroDocumento" class="form-control" placeholder="Ej: 12345678" required minlength="6" maxlength="10" pattern="^[0-9]+$">
               <div class="invalid-feedback">Ingresa solo números (5–15 dígitos).</div>
             </div>
 
@@ -144,10 +211,13 @@
               </select>
               <div class="invalid-feedback">Selecciona al menos un curso.</div>
             </div>
-
-            <div class="col-12">
-              <label class="form-label"><i class="bi bi-chat-left-text me-1"></i>Comentarios (opcional)</label>
-              <textarea id="comentarios" name="comentarios" class="form-control" rows="3" placeholder="Algo que quieras que el instructor sepa..."></textarea>
+            
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="terminos" required>
+              <label class="form-check-label" for="terminos">
+                Acepto los 
+                <a href="terminosCondiciones.html" target="_blank">términos y condiciones</a>
+              </label>
             </div>
 
             <div class="col-12 d-flex justify-content-between align-items-center">
@@ -170,6 +240,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
+    verificarEntradaFormulario();
     // Preserve the existing preselect + validation + submit logic.
     (function preselectFromQuery(){
       try {
@@ -211,6 +282,7 @@
     const email = document.getElementById('email');
     const celular = document.getElementById('celular');
     const curso = document.getElementById('curso');
+    const terminos = document.getElementById('terminos');
 
     // Regex validators
     const nameRegex = /^[A-Za-zÀ-ÿñÑ' -]{2,}$/;
@@ -231,6 +303,15 @@
     celular.addEventListener('input', () => checkField(celular, v => phoneRegex.test(v)));
     tipoDocumento.addEventListener('change', () => checkField(tipoDocumento, v => tipoDocumento.value !== ''));
     curso.addEventListener('change', () => checkField(curso, v => curso.value !== ''));
+    terminos.addEventListener('change', () => {
+      if (terminos.checked) {
+        terminos.classList.remove('is-invalid');
+        terminos.classList.add('is-valid');
+      } else {
+        terminos.classList.remove('is-valid');
+        terminos.classList.add('is-invalid');
+      }
+    });
 
     form.addEventListener('submit', function (event) {
       event.preventDefault();
@@ -244,6 +325,10 @@
       if (!checkField(email, v => email.checkValidity())) valid = false;
       if (!checkField(celular, v => phoneRegex.test(v))) valid = false;
       if (!checkField(curso, v => curso.value !== '')) valid = false;
+      if (!checkField(curso, v => curso.value !== '')) valid = false;
+      if (!terminos.checked) {
+        valid = false;
+      }
 
       form.classList.add('was-validated');
 
@@ -251,10 +336,19 @@
         salida.innerHTML = '<div class="alert alert-danger" role="alert">Hay errores en el formulario. Revisa los campos marcados en rojo.</div>';
         salida.scrollIntoView({behavior: 'smooth'});
         return;
+      } else {
+        const nombres = document.getElementById('nombres').value;
+        const apellidos = document.getElementById('apellidos').value;
+        const nombreCompleto=nombres.trim()+" "+apellidos.trim();
+        const email = document.getElementById('email').value;
+        mostrarModal();
+        getUserIP().then(ip => {
+            enviarAccion('Envio',nombreCompleto,email,ip)
+        });
       }
 
       // Build summary (kept for debugging if needed)
-      const resumen = `\nTipo documento: ${tipoDocumento.options[tipoDocumento.selectedIndex].text}\nDocumento: ${numeroDocumento.value}\nNombre: ${nombres.value} ${apellidos.value}\nCorreo: ${email.value}\nCelular: ${celular.value}\nCurso: ${curso.value}\nComentarios: ${document.getElementById('comentarios').value}`;
+      const resumen = `\nTipo documento: ${tipoDocumento.options[tipoDocumento.selectedIndex].text}\nDocumento: ${numeroDocumento.value}\nNombre: ${nombres.value} ${apellidos.value}\nCorreo: ${email.value}\nCelular: ${celular.value}\nCurso: ${curso.value}`;
 
       // Do not show an on-page notification; keep behavior silent and reset the form.
       form.reset();
@@ -280,6 +374,25 @@
         salida.innerHTML = '';
       }, 0);
     });
+
+    // Función para mostrar el modal
+    function mostrarModal() {
+      document.getElementById("registroModal").style.display = "block";
+    }
+
+    // Función para cerrar el modal
+    function cerrarModal() {
+      document.getElementById("registroModal").style.display = "none";
+    }
+
+    // Cierra el modal si se hace clic fuera del contenido
+    window.onclick = function(event) {
+      let modal = document.getElementById("registroModal");
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
   </script>
 </body>
 </html>
