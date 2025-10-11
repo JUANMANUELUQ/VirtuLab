@@ -135,7 +135,7 @@
       <span class="close" onclick="cerrarModal()">&times;</span>
       <h2>Registro Exitoso ✅</h2>
       <p>Te has registrado correctamente en el curso.</p>
-      <p>Revisa tu correo, pronto recibirás más información.</p>
+      <p>Revisa tu correo, pronto recibirás más información. Recuerda revisar en la bandeja de spam.</p>
       <button class="btn" onclick="cerrarModal()">Aceptar</button>
     </div>
   </div>
@@ -163,7 +163,7 @@
             <div class="col-md-6">
               <label for="numeroDocumento" class="form-label required"><i class="bi bi-123 me-1"></i>Número de documento</label>
               <input type="text" inputmode="numeric" id="numeroDocumento" name="numeroDocumento" class="form-control" placeholder="Ej: 12345678" required minlength="6" maxlength="10" pattern="^[0-9]+$">
-              <div class="invalid-feedback">Ingresa solo números (5–15 dígitos).</div>
+              <div class="invalid-feedback">Ingresa solo números 6–10 dígitos).</div>
             </div>
 
             <div class="col-md-6">
@@ -286,7 +286,7 @@
 
     // Regex validators
     const nameRegex = /^[A-Za-zÀ-ÿñÑ' -]{2,}$/;
-    const docRegex = /^[0-9]{5,15}$/; // only digits 5-15
+    const docRegex = /^[0-9]{6,10}$/; // only digits 5-15
     const phoneRegex = /^[+0-9()\s-]{7,20}$/;
 
     function checkField(field, testFn) {
