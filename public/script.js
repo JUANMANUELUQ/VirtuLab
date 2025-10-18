@@ -47,6 +47,7 @@ getUserIP().then(ip => {
 
 // script.js
 async function enviarAccion(accion,nombre,email,ip) {
+  /*
   try {
     console.log("1");
     const resp = await fetch('/api/guardar', {
@@ -67,4 +68,5 @@ async function enviarAccion(accion,nombre,email,ip) {
   } catch (err) {
     document.getElementById('out').textContent = 'Error de red: ' + err.message;
   }
+  */
 }
